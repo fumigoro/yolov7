@@ -158,6 +158,14 @@ def run(
                     n = (det[:, 5] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
+                # 物体ごとのセグメンテーション結果を画像として保存
+                mask_img_array = masks.cpu().numpy()
+                os.makedirs(str(save_dir / 'masks' / p.stem), exist_ok=True)
+                for class_id, mask in enumerate(mask_img_array):
+                    # 0と1の値を255でスケーリング（白黒画像のため）
+                    mask_scaled = mask * 255
+                    cv2.imwrite(str(save_dir / 'masks' / p.stem /f'{p.stem}_{class_id}.png'), mask_scaled)
+                
                 # Mask plotting ----------------------------------------------------------------------------------------
                 mcolors = [colors(int(cls), True) for cls in det[:, 5]]
                 im_masks = plot_masks(im[i], masks, mcolors)  # image with masks shape(imh,imw,3)
