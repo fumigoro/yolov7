@@ -1,0 +1,23 @@
+name: yolov7
+dependencies:
+  - python
+  - matplotlib>=3.2.2
+  - numpy>=1.18.5,<1.24.0
+  - opencv>=4.1.1  # "opencv-python" on PyPI is usually "opencv" in Conda
+  - pillow>=7.1.2
+  - pyyaml>=5.3.1
+  - requests>=2.23.0
+  - scipy>=1.4.1
+  - pytorch>=1.7.0,!=1.12.0  # Specify the pytorch channel if needed
+  - torchvision>=0.8.1,!=0.13.0  # Specify the pytorch channel if needed
+  - tqdm>=4.41.0
+  - protobuf<4.21.3
+  - tensorboard>=2.4.1
+  - pandas>=1.1.4
+  - seaborn>=0.11.0
+  - ipython  # "ipython" package name is the same in Conda
+  - psutil  # "psutil" package name is the same in Conda
+  # Optional dependencies you commented out would go here, with their Conda names if different from PyPI
+  - pip:
+    - thop  # If "thop" is not available in Conda channels, install it from pip here
+    # Add any other pip-only packages here
